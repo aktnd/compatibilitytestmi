@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Compatibility</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', cursive;
+            text-align: center;
+            background-color: #fce4ec;
+        }
+
+        h1 {
+            color: #e91e63;
+        }
+
+        #valentineForm {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #askButton {
+            background-color: #e91e63;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #e91e63;
+        }
+
+        .additionalBox {
+            display: none;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #valentineButton {
+            background-color: #e91e63;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #valentineQuestion {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .choiceButton {
+            background-color: #e91e63;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Compatibility Test 💖</h1>
+    <div id="valentineForm">
+        <label for="name1">Enter the first name: </label>
+        <input type="text" id="name1" required>
+        <br> <p>
+        <label for="name2">Enter the second name: </label>
+        <input type="text" id="name2" required>
+        <br><p>
+        <button id="askButton" onclick="checkPerfectMatch()">Check Compatibility</button>
+        <div id="result"></div>
+    </div>
+
+    <div class="additionalBox" id="additionalBox">
+        <button id="valentineButton" onclick="showValentineQuestion()">Press me ❤️</button>
+        <div id="valentineQuestion">
+            <p>Ioanna, will you be my valentine?</p>
+            <button class="choiceButton" onclick="showLove()">Yes</button>
+            <button class="choiceButton" onclick="showWrongAnswer()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function checkPerfectMatch() {
+            var name1 = document.getElementById('name1').value.trim();
+            var name2 = document.getElementById('name2').value.trim();
+            var resultDiv = document.getElementById('result');
+            var additionalBox = document.getElementById('additionalBox');
+            var valentineQuestion = document.getElementById('valentineQuestion');
+
+            if (name1 === "" || name2 === "") {
+                resultDiv.innerHTML = "Please enter both names.";
+                additionalBox.style.display = "none";
+                valentineQuestion.style.display = "none";
+            } else if ((name1 === "Manolis" && name2 === "Ioanna") || (name2 === "Manolis" && name1 === "Ioanna")) {
+                resultDiv.innerHTML = "Perfect Match! 💖";
+                additionalBox.style.display = "block";
+            } else {
+                resultDiv.innerHTML = "Ew";
+                additionalBox.style.display = "none";
+                valentineQuestion.style.display = "none";
+            }
+        }
+
+        function showValentineQuestion() {
+            var valentineQuestion = document.getElementById('valentineQuestion');
+            valentineQuestion.style.display = "block";
+        }
+
+        function showLove() {
+            var valentineQuestion = document.getElementById('valentineQuestion');
+            valentineQuestion.innerHTML = "I love you <3";
+        }
+
+        function showWrongAnswer() {
+            var valentineQuestion = document.getElementById('valentineQuestion');
+            valentineQuestion.innerHTML = "Wrong Answer >:(";
+        }
+    </script>
+</body>
+</html>
